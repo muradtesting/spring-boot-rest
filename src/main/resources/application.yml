@@ -1,0 +1,37 @@
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1
+    username: sa
+    password: password
+    database-platform: org.hibernate.dialect.H2Dialect
+  h2:
+    console:
+      enabled: true
+      path: /h2
+  liquibase:
+    change-log: classpath:liquibase/changelog-master.yml
+logging:
+  level:
+    root: OFF
+    org.springframework.web: OFF
+    com.example.springbootrestclient.controller: INFO
+    com.example.springbootrestclient.service: INFO
+  file:
+    path: src/main/resources/logs
+    name: ${logging.file.path}/api.log
+    clean-history-on-start: true
+    max-size: 150B
+  pattern:
+    console: "%clr(%d{yy-MM-dd HH:mm:ss.SSS}){blue}  %clr(---){faint} %clr(%-40.40logger{0}){blue} %clr(:){red} %clr(%m){faint}%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss.SSS} - %msg%n"
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 2KB
+      maxFileSize: 20MB
+      maxRequestSize: 24MB
+      location: src/main/resources/logs/api.log
+server:
+  port: 8086
+

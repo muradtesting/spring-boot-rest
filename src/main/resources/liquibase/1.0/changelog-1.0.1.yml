@@ -1,0 +1,27 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-logging-table
+      author: Murad Ibrahimli
+      changes:
+        - createTable:
+            tableName: tbl_logging
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: insert_date
+                  type: DATE
+                  constraints:
+                    nullable: false
+            remarks: Table to store  logging data
+
+
+
+
+
+
